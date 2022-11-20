@@ -5,7 +5,10 @@ import com.wutsi.marketplace.manager.dto.AddPictureResponse
 import com.wutsi.marketplace.manager.dto.CreateProductRequest
 import com.wutsi.marketplace.manager.dto.CreateProductResponse
 import com.wutsi.marketplace.manager.dto.EnableStoreResponse
+import com.wutsi.marketplace.manager.dto.GetProductResponse
 import com.wutsi.marketplace.manager.dto.ImportProductRequest
+import com.wutsi.marketplace.manager.dto.SearchProductRequest
+import com.wutsi.marketplace.manager.dto.SearchProductResponse
 import com.wutsi.marketplace.manager.dto.UpdateProductAttributeListRequest
 import feign.Headers
 import feign.Param
@@ -42,6 +45,14 @@ public interface MarketplaceManagerApi {
   @RequestLine("POST /v1/products/import")
   @Headers(value=["Content-Type: application/json"])
   public fun importProduct(request: ImportProductRequest): Unit
+
+  @RequestLine("POST /v1/products/search")
+  @Headers(value=["Content-Type: application/json"])
+  public fun searchProduct(request: SearchProductRequest): SearchProductResponse
+
+  @RequestLine("GET /v1/products/{id}")
+  @Headers(value=["Content-Type: application/json"])
+  public fun getProduct(@Param("id") id: Long): GetProductResponse
 
   @RequestLine("POST /v1/pictures")
   @Headers(value=["Content-Type: application/json"])
