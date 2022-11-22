@@ -54,6 +54,10 @@ public interface MarketplaceManagerApi {
   @Headers(value=["Content-Type: application/json"])
   public fun getProduct(@Param("id") id: Long): GetProductResponse
 
+  @RequestLine("DELETE /v1/products/{id}")
+  @Headers(value=["Content-Type: application/json"])
+  public fun deleteProduct(@Param("id") id: Long): Unit
+
   @RequestLine("POST /v1/pictures")
   @Headers(value=["Content-Type: application/json"])
   public fun addPicture(request: AddPictureRequest): AddPictureResponse
