@@ -6,6 +6,7 @@ import com.wutsi.marketplace.manager.dto.CreateProductRequest
 import com.wutsi.marketplace.manager.dto.CreateProductResponse
 import com.wutsi.marketplace.manager.dto.EnableStoreResponse
 import com.wutsi.marketplace.manager.dto.GetProductResponse
+import com.wutsi.marketplace.manager.dto.GetStoreResponse
 import com.wutsi.marketplace.manager.dto.ImportProductRequest
 import com.wutsi.marketplace.manager.dto.SearchProductRequest
 import com.wutsi.marketplace.manager.dto.SearchProductResponse
@@ -25,6 +26,10 @@ public interface MarketplaceManagerApi {
   @RequestLine("DELETE /v1/stores")
   @Headers(value=["Content-Type: application/json"])
   public fun suspendStore(): Unit
+
+  @RequestLine("GET /v1/stores/{id}")
+  @Headers(value=["Content-Type: application/json"])
+  public fun getStore(@Param("id") id: Long): GetStoreResponse
 
   @RequestLine("POST /v1/products")
   @Headers(value=["Content-Type: application/json"])
