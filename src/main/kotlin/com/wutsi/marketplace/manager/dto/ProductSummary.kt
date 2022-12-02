@@ -1,6 +1,5 @@
 package com.wutsi.marketplace.manager.dto
 
-import java.time.OffsetDateTime
 import kotlin.Int
 import kotlin.Long
 import kotlin.String
@@ -16,7 +15,5 @@ public data class ProductSummary(
   public val categoryId: Long? = null,
   public val currency: String = "",
   public val quantity: Int? = null,
-  public val created: OffsetDateTime = OffsetDateTime.now(),
-  public val updated: OffsetDateTime = OffsetDateTime.now(),
   public val status: String = "",
 )
