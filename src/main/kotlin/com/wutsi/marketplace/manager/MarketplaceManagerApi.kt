@@ -1,10 +1,10 @@
 package com.wutsi.marketplace.manager
 
+import com.wutsi.marketplace.manager.dto.ActivateStoreResponse
 import com.wutsi.marketplace.manager.dto.AddPictureRequest
 import com.wutsi.marketplace.manager.dto.AddPictureResponse
 import com.wutsi.marketplace.manager.dto.CreateProductRequest
 import com.wutsi.marketplace.manager.dto.CreateProductResponse
-import com.wutsi.marketplace.manager.dto.EnableStoreResponse
 import com.wutsi.marketplace.manager.dto.GetProductResponse
 import com.wutsi.marketplace.manager.dto.GetStoreResponse
 import com.wutsi.marketplace.manager.dto.ImportProductRequest
@@ -21,11 +21,11 @@ import kotlin.Unit
 public interface MarketplaceManagerApi {
   @RequestLine("POST /v1/stores")
   @Headers(value=["Content-Type: application/json"])
-  public fun enableStore(): EnableStoreResponse
+  public fun activateStore(): ActivateStoreResponse
 
   @RequestLine("DELETE /v1/stores")
   @Headers(value=["Content-Type: application/json"])
-  public fun suspendStore(): Unit
+  public fun deactivateStore(): Unit
 
   @RequestLine("GET /v1/stores/{id}")
   @Headers(value=["Content-Type: application/json"])
