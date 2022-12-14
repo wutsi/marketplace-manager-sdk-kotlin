@@ -22,4 +22,6 @@ public data class Product(
   public val updated: OffsetDateTime = OffsetDateTime.now(),
   public val status: String = "",
   public val published: OffsetDateTime? = null,
+  public val type: String = "",
+  public val event: Event? = null,
 )

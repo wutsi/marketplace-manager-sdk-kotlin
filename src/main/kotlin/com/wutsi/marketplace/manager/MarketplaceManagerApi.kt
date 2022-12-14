@@ -8,9 +8,11 @@ import com.wutsi.marketplace.manager.dto.CreateProductResponse
 import com.wutsi.marketplace.manager.dto.GetProductResponse
 import com.wutsi.marketplace.manager.dto.GetStoreResponse
 import com.wutsi.marketplace.manager.dto.ImportProductRequest
+import com.wutsi.marketplace.manager.dto.SearchMeetingProviderResponse
 import com.wutsi.marketplace.manager.dto.SearchProductRequest
 import com.wutsi.marketplace.manager.dto.SearchProductResponse
 import com.wutsi.marketplace.manager.dto.UpdateProductAttributeListRequest
+import com.wutsi.marketplace.manager.dto.UpdateProductEventRequest
 import feign.Headers
 import feign.Param
 import feign.RequestLine
@@ -31,6 +33,10 @@ public interface MarketplaceManagerApi {
   @Headers(value=["Content-Type: application/json"])
   public fun getStore(@Param("id") id: Long): GetStoreResponse
 
+  @RequestLine("POST /v1/meeting-providers/search")
+  @Headers(value=["Content-Type: application/json"])
+  public fun searchMeetingProvider(): SearchMeetingProviderResponse
+
   @RequestLine("POST /v1/products")
   @Headers(value=["Content-Type: application/json"])
   public fun createProduct(request: CreateProductRequest): CreateProductResponse
@@ -46,6 +52,10 @@ public interface MarketplaceManagerApi {
   @RequestLine("POST /v1/products/{id}/unpublish")
   @Headers(value=["Content-Type: application/json"])
   public fun unpublishProduct(@Param("id") id: Long): Unit
+
+  @RequestLine("POST /v1/products/event")
+  @Headers(value=["Content-Type: application/json"])
+  public fun updateProductEvent(request: UpdateProductEventRequest): Unit
 
   @RequestLine("POST /v1/products/import")
   @Headers(value=["Content-Type: application/json"])
