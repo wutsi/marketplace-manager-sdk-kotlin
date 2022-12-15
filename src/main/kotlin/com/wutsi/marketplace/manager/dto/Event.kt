@@ -8,7 +8,7 @@ public data class Event(
   public val online: Boolean = false,
   public val meetingId: String = "",
   public val meetingPassword: String? = null,
-  public val meetingProvider: MeetingProviderSummary = MeetingProviderSummary(),
+  public val meetingProvider: MeetingProviderSummary? = null,
   public val meetingJoinUrl: String? = null,
   public val starts: OffsetDateTime? = null,
   public val ends: OffsetDateTime? = null,
