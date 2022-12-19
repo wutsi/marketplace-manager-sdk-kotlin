@@ -1,8 +1,10 @@
 package com.wutsi.marketplace.manager
 
 import com.wutsi.marketplace.manager.dto.ActivateStoreResponse
-import com.wutsi.marketplace.manager.dto.AddPictureRequest
-import com.wutsi.marketplace.manager.dto.AddPictureResponse
+import com.wutsi.marketplace.manager.dto.CreateFileRequest
+import com.wutsi.marketplace.manager.dto.CreateFileResponse
+import com.wutsi.marketplace.manager.dto.CreatePictureRequest
+import com.wutsi.marketplace.manager.dto.CreatePictureResponse
 import com.wutsi.marketplace.manager.dto.CreateProductRequest
 import com.wutsi.marketplace.manager.dto.CreateProductResponse
 import com.wutsi.marketplace.manager.dto.GetProductResponse
@@ -45,6 +47,14 @@ public interface MarketplaceManagerApi {
   @Headers(value=["Content-Type: application/json"])
   public fun updateProductAttribute(request: UpdateProductAttributeListRequest): Unit
 
+  @RequestLine("POST /v1/files")
+  @Headers(value=["Content-Type: application/json"])
+  public fun createFile(request: CreateFileRequest): CreateFileResponse
+
+  @RequestLine("DELETE /v1/files/{id}")
+  @Headers(value=["Content-Type: application/json"])
+  public fun deleteFile(@Param("id") id: Long): Unit
+
   @RequestLine("POST /v1/products/{id}/publish")
   @Headers(value=["Content-Type: application/json"])
   public fun publishProduct(@Param("id") id: Long): Unit
@@ -75,7 +85,7 @@ public interface MarketplaceManagerApi {
 
   @RequestLine("POST /v1/pictures")
   @Headers(value=["Content-Type: application/json"])
-  public fun addPicture(request: AddPictureRequest): AddPictureResponse
+  public fun createPicture(request: CreatePictureRequest): CreatePictureResponse
 
   @RequestLine("DELETE /v1/pictures/{id}")
   @Headers(value=["Content-Type: application/json"])
