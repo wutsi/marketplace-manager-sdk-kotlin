@@ -1,18 +1,24 @@
 package com.wutsi.marketplace.manager
 
 import com.wutsi.marketplace.manager.dto.ActivateStoreResponse
+import com.wutsi.marketplace.manager.dto.CreateDiscountRequest
+import com.wutsi.marketplace.manager.dto.CreateDiscountResponse
 import com.wutsi.marketplace.manager.dto.CreateFileRequest
 import com.wutsi.marketplace.manager.dto.CreateFileResponse
 import com.wutsi.marketplace.manager.dto.CreatePictureRequest
 import com.wutsi.marketplace.manager.dto.CreatePictureResponse
 import com.wutsi.marketplace.manager.dto.CreateProductRequest
 import com.wutsi.marketplace.manager.dto.CreateProductResponse
+import com.wutsi.marketplace.manager.dto.GetDiscountResponse
 import com.wutsi.marketplace.manager.dto.GetProductResponse
 import com.wutsi.marketplace.manager.dto.GetStoreResponse
 import com.wutsi.marketplace.manager.dto.ImportProductRequest
+import com.wutsi.marketplace.manager.dto.SearchDiscountRequest
+import com.wutsi.marketplace.manager.dto.SearchDiscountResponse
 import com.wutsi.marketplace.manager.dto.SearchMeetingProviderResponse
 import com.wutsi.marketplace.manager.dto.SearchProductRequest
 import com.wutsi.marketplace.manager.dto.SearchProductResponse
+import com.wutsi.marketplace.manager.dto.UpdateDiscountRequest
 import com.wutsi.marketplace.manager.dto.UpdateProductAttributeListRequest
 import com.wutsi.marketplace.manager.dto.UpdateProductEventRequest
 import feign.Headers
@@ -94,4 +100,34 @@ public interface MarketplaceManagerApi {
   @RequestLine("GET /v1/categories/import?language={language}")
   @Headers(value=["Content-Type: application/json"])
   public fun importCategory(@Param("language") language: String): Unit
+
+  @RequestLine("POST /v1/discounts")
+  @Headers(value=["Content-Type: application/json"])
+  public fun createDiscount(request: CreateDiscountRequest): CreateDiscountResponse
+
+  @RequestLine("GET /v1/discounts/{id}")
+  @Headers(value=["Content-Type: application/json"])
+  public fun getDiscount(@Param("id") id: Long): GetDiscountResponse
+
+  @RequestLine("POST /v1/discounts/{id}")
+  @Headers(value=["Content-Type: application/json"])
+  public fun updateDiscount(@Param("id") id: Long, request: UpdateDiscountRequest): Unit
+
+  @RequestLine("DELETE /v1/discounts/{id}")
+  @Headers(value=["Content-Type: application/json"])
+  public fun deleteDiscount(@Param("id") id: Long): Unit
+
+  @RequestLine("POST /v1/discounts/search")
+  @Headers(value=["Content-Type: application/json"])
+  public fun searchDiscount(request: SearchDiscountRequest): SearchDiscountResponse
+
+  @RequestLine("POST /v1/discounts/{discount-id}/products/{product-id}")
+  @Headers(value=["Content-Type: application/json"])
+  public fun addDiscountProduct(@Param("discount-id") discountId: Long, @Param("product-id")
+      productId: Long): Unit
+
+  @RequestLine("DELETE /v1/discounts/{discount-id}/products/{product-id}")
+  @Headers(value=["Content-Type: application/json"])
+  public fun removeDiscountProduct(@Param("discount-id") discountId: Long, @Param("product-id")
+      productId: Long): Unit
 }
