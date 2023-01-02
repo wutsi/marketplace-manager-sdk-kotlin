@@ -15,7 +15,6 @@ public data class Product(
   public val summary: String? = null,
   public val description: String? = null,
   public val price: Long? = null,
-  public val comparablePrice: Long? = null,
   public val currency: String = "",
   public val quantity: Int? = null,
   public val created: OffsetDateTime = OffsetDateTime.now(),
