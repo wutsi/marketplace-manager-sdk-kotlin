@@ -22,7 +22,7 @@ public data class Product(
   public val status: String = "",
   public val published: OffsetDateTime? = null,
   public val type: String = "",
-  public val event: Event? = null,
+  public val event: Event?= null,
   public val files: List<FileSummary> = emptyList(),
   public val totalOrders: Long = 0,
   public val totalUnits: Long = 0,

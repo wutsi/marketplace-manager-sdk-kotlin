@@ -18,7 +18,7 @@ import com.wutsi.marketplace.manager.dto.SearchDiscountResponse
 import com.wutsi.marketplace.manager.dto.SearchMeetingProviderResponse
 import com.wutsi.marketplace.manager.dto.SearchProductRequest
 import com.wutsi.marketplace.manager.dto.SearchProductResponse
-import com.wutsi.marketplace.manager.dto.UpdateDiscountRequest
+import com.wutsi.marketplace.manager.dto.UpdateDiscountAttributeRequest
 import com.wutsi.marketplace.manager.dto.UpdateProductAttributeListRequest
 import com.wutsi.marketplace.manager.dto.UpdateProductEventRequest
 import feign.Headers
@@ -109,13 +109,14 @@ public interface MarketplaceManagerApi {
   @Headers(value=["Content-Type: application/json"])
   public fun getDiscount(@Param("id") id: Long): GetDiscountResponse
 
-  @RequestLine("POST /v1/discounts/{id}")
-  @Headers(value=["Content-Type: application/json"])
-  public fun updateDiscount(@Param("id") id: Long, request: UpdateDiscountRequest): Unit
-
   @RequestLine("DELETE /v1/discounts/{id}")
   @Headers(value=["Content-Type: application/json"])
   public fun deleteDiscount(@Param("id") id: Long): Unit
+
+  @RequestLine("POST /v1/discounts/{id}/attributes")
+  @Headers(value=["Content-Type: application/json"])
+  public fun updateDiscountAttribute(@Param("id") id: Long,
+      request: UpdateDiscountAttributeRequest): Unit
 
   @RequestLine("POST /v1/discounts/search")
   @Headers(value=["Content-Type: application/json"])
